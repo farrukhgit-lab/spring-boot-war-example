@@ -27,12 +27,12 @@ pipeline {
             }
         }
          stage('Deploy on Prod') {
-            steps {
-                // deploy on container -> plugin
-                input {
+            input {
                     message 'Should we continue?'
                 }
-
+            steps {
+                // deploy on container -> plugin
+                
                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'tomcat9details', path: '', url: 'http://192.168.34.9:8080')], contextPath: '/app', war: '**/*.war'
                
             }
